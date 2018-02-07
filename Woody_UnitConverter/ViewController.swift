@@ -8,11 +8,31 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return unitNames.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return unitNames.object(at: row) as? String
+    }
+    
+    var units: NSDictionary!
+    var unitNames: NSArray!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // 1. get reference to app bundle
+        let appBundle = Bundle.main
+        // 2. get reference to units file path
+        let filePath = appBundle.path(forResource: "units", ofType: "plist")!
+        //3. load file into the units dictionary object
+        units = NSDictionary(contentsOfFile: filePath)!
+        //4. retrieve unit names (keys) into unitNames array object
+        unitNames = units.allKeys as NSArray
     }
 
     override func didReceiveMemoryWarning() {
