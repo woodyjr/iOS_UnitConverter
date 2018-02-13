@@ -33,6 +33,19 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         units = NSDictionary(contentsOfFile: filePath)!
         //4. retrieve unit names (keys) into unitNames array object
         unitNames = units.allKeys as NSArray
+        unitNames = unitNames.sorted(by: sortUnitNames) as NSArray!
+    }
+    
+    func sortUnitNames(first: Any, second:Any) -> Bool{
+        let firstName = first as! String
+        let secondName = second as! String
+        
+        //return firstName > secondName
+        
+        let convFactor1 = units.value(forKey: firstName) as! Float
+        let convFactor2 = units.value(forKey: secondName) as! Float
+        
+        return convFactor1 < convFactor2
     }
 
     override func didReceiveMemoryWarning() {

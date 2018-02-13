@@ -29,6 +29,10 @@
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhB-3X-aKf">
                                 <rect key="frame" x="182" y="146" width="193" height="257"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="pW1-5q-xev"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Xh2-y9-8xF"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
